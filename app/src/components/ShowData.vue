@@ -1,8 +1,7 @@
 <template>
-    <section>
-        <form>
-        </form>
-    </section>
+    <div>
+
+    </div>
 </template>
 
 <script setup lang="ts">
