@@ -12,7 +12,8 @@
 <script setup lang="ts">
 import utensilsImg from '@/assets/utensils.png'
 import { getAllData, filterOutBadData } from '@/store/functions'
-
+const data = await getAllData()
+await filterOutBadData(data)
 </script>
 
 <style scoped>
