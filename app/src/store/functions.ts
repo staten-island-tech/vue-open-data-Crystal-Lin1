@@ -1,4 +1,4 @@
-export async function getAllData(): Promise<Object>[] {
+export async function getAllData(): Promise<Record<string, any>[]> {
     const url = 'https://data.cityofnewyork.us/resource/43nn-pn8j.json'
     //NOTE: the dataset has 297k rows but default amount u can get is 1k. but thats still a lot
     //if i have extra time ill look into how to get the rest of the data
@@ -10,6 +10,7 @@ export async function getAllData(): Promise<Object>[] {
     } catch (error) {
         console.log(error)
     }
+    return [] //here so t
     }
 export async function filterOutBadData(data: Record<string, unknown>[]): Promise<Record<string, unknown>[]> {
     const filteredData = data.filter((obj) => {
