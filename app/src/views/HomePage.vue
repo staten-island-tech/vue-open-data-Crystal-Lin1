@@ -15,13 +15,14 @@
 
 <script setup lang="ts">
 import utensilsImg from '@/assets/utensils.png'
-import { getAllData, filterOutBadData } from '@/store/functions'
+import { getAllData, filterOutBadData, filterBasedonBoro} from '@/store/functions'
 import {ref} from 'vue'
 import BoroughData from '@/components/BoroughData.vue'
 
 const showBoroData = ref(false)
 const data = await getAllData()
 const filteredData = await filterOutBadData(data)
+const boroData = await filterBasedonBoro(filteredData, 'Brooklyn') 
 </script>
 
 <style scoped>
