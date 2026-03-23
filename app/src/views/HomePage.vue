@@ -11,6 +11,7 @@
         <button class="font-bold">Guessing Game</button>
     </header>
     <BoroughData v-if="showBoroData"></BoroughData>
+    <GradeCharts :grades="[]"></GradeCharts>
 </template>
 
 <script setup lang="ts">
@@ -18,6 +19,7 @@ import utensilsImg from '@/assets/utensils.png'
 import { getAllData, filterOutBadData, filterBasedonBoro} from '@/store/functions'
 import {ref} from 'vue'
 import BoroughData from '@/components/BoroughData.vue'
+import GradeCharts from '@/components/GradeCharts.vue'
 
 const showBoroData = ref(false)
 const data = await getAllData()
