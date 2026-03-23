@@ -116,10 +116,12 @@ ChartJS.register(
 // ── Props ──────────────────────────────────────────────────────────────────
 // SAMPLE_DATA is declared in the normal <script> block above, so it's safely
 // available when defineProps is hoisted.
-const props = withDefaults(
-  defineProps<{ inspections?: Inspection[] }>(),
-  { inspections: () => SAMPLE_DATA },
-)
+const props = defineProps<{ inspections: Inspection[] }>()
+  
+
+// withdefaults is needed bc if u js do defineprops<props>
+// those props will be deleted when the code runs bc those props r defined
+// only when compiling
 
 // ── Grade colour map ───────────────────────────────────────────────────────
 const GRADE_COLORS: Record<string, string> = {

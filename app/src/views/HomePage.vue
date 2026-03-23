@@ -10,21 +10,25 @@
         <button @click='showBoroData = true' class="font-bold">Get Data by Borough</button>
         <button class="font-bold">Guessing Game</button>
     </header>
-    <BoroughData v-if="showBoroData"></BoroughData>
-    <GradeCharts :grades="[]"></GradeCharts>
+    <BoroughData v-if="showBoroData" ></BoroughData>
+    <!-- <GradeCharts :grades="[]" v-if="showGradeCharts"></GradeCharts> -->
 </template>
 
 <script setup lang="ts">
 import utensilsImg from '@/assets/utensils.png'
-import { getAllData, filterOutBadData, filterBasedonBoro} from '@/store/functions'
+import { getAllData, filterOutBadData, getBoroData} from '@/store/functions'
 import {ref} from 'vue'
 import BoroughData from '@/components/BoroughData.vue'
 import GradeCharts from '@/components/GradeCharts.vue'
 
-const showBoroData = ref(false)
+let showGradeCharts = ref(false)
+let showBoroData = ref(false)
 const data = await getAllData()
 const filteredData = await filterOutBadData(data)
-const boroData = await filterBasedonBoro(filteredData, 'Brooklyn') 
+const boros = 
+const boroData = await getBoroData(filteredData, 'Brooklyn') 
+
+
 </script>
 
 <style scoped>

@@ -18,8 +18,9 @@ export async function filterOutBadData(data: Record<string, unknown>[]): Promise
     return filteredData 
 }
 
-export async function filterBasedonBoro(filteredData: Record<string, unknown>[], boro: String): Promise<Record<string, unknown>[]> {
+export async function getBoroData(filteredData: Record<string, unknown>[], boro: String): Promise<Record<string, unknown>[]> {
     let boroData = null
+    
     boroData = filteredData.filter((obj) => {
         return obj.boro === boro
     })
