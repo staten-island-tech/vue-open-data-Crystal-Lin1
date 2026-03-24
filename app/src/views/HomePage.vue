@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import utensilsImg from '@/assets/utensils.png'
 import { getAllData, filterOutBadData, getBoroData} from '@/store/functions'
-import {ref} from 'vue'
+import {ref, onMounted} from 'vue'
 import BoroughData from '@/components/BoroughData.vue'
 import GradeCharts from '@/components/GradeCharts.vue'
 
@@ -25,9 +25,11 @@ let showGradeCharts = ref(false)
 let showBoroData = ref(false)
 const data = await getAllData()
 const filteredData = await filterOutBadData(data)
-const boros = 
-const boroData = await getBoroData(filteredData, 'Brooklyn') 
+let boroData = ref<any>(null)
 
+onMounted(async () => {
+  boroData.value = await getBoroData(filteredData, 'Brooklyn')
+})
 
 </script>
 
