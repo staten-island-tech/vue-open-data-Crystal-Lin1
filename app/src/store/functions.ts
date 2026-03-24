@@ -27,3 +27,15 @@ export async function getBoroData(filteredData: Record<string, unknown>[], boro:
     console.log(boroData)
     return boroData
 } 
+
+
+interface Inspection {
+  camis: string
+  dba: string
+  boro: string
+  inspection_date: string
+  grade: string
+  grade_date: string
+  score: string
+  [key: string]: unknown
+}

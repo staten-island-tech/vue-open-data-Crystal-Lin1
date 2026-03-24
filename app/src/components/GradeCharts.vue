@@ -86,8 +86,8 @@ interface Inspection {
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement)
 
 const props = defineProps<{
-  inspections: Inspection[]
-  boros: string[]
+  inspections: Record<string, any>[]
+  boros: String[]
 }>()
 
 const GRADE_COLORS: Record<string, string> = {

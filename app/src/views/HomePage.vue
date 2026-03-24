@@ -11,7 +11,7 @@
         <button class="font-bold">Guessing Game</button>
     </header>
     <BoroughData v-if="showBoroData" ></BoroughData>
-    <!-- <GradeCharts :grades="[]" v-if="showGradeCharts"></GradeCharts> -->
+    <GradeCharts :boros='boros' :inspections="filteredData" v-if="showGradeCharts"/>
 </template>
 
 <script setup lang="ts">
@@ -26,7 +26,7 @@ let showBoroData = ref(false)
 const data = await getAllData()
 const filteredData = await filterOutBadData(data)
 let boroData = ref<any>(null)
-
+let boros = ref(['Brooklyn', 'Staten Island'])
 onMounted(async () => {
   boroData.value = await getBoroData(filteredData, 'Brooklyn')
 })
