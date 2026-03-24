@@ -1,6 +1,7 @@
 <template>
     <div class="shadow w-[50%] p-10 m-auto flex justify-center">
         <form @submit.prevent="" >
+
             <div class="flex">
                 <input class='mr-2'id='statenIsland' name='boro' value='statenIsland' type="checkbox">
                 <label for="statenIsland">Staten Island</label>
@@ -27,8 +28,12 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+defineEmits(['boros'])
 
+const userBoros = computed(() => {
 
+})
 </script>
 
 <style scoped>

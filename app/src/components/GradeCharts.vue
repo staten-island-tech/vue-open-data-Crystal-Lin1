@@ -72,17 +72,6 @@ import {
 } from 'chart.js'
 import { Pie, Bar } from 'vue-chartjs'
 
-interface Inspection {
-  camis: string
-  dba: string
-  boro: string
-  inspection_date: string
-  grade: string
-  grade_date: string
-  score: string
-  [key: string]: unknown
-}
-
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement)
 
 const props = defineProps<{
