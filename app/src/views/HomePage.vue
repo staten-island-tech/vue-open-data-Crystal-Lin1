@@ -1,4 +1,4 @@
-<template>
+<template class="bg-gray-50">
     <header class="bg-red-200 py-5 flex justify-between shadow">
         <div class="flex">
         <img :src='utensilsImg' class="w-[4%]">
