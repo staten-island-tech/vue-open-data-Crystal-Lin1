@@ -8,10 +8,12 @@
             </div>
         </div>
         <button @click='showBoroData = true' class="font-bold">Get Data by Borough</button>
-        <button class="font-bold">Guessing Game</button>
+        <button class="font-bold">Guessing Game</button> 
+        <button @click="showAPIInfo = true">API Parameter Info</button>
     </header>
     <BoroughData v-if="showBoroData" @close="showBoroData = false"></BoroughData>
     <GradeCharts :boros='boros' :inspections="filteredData" v-if="showGradeCharts"/>
+    <APIInfo v-if="showAPIInfo" @close="showAPIInfo = false"/>
 </template>
 
 <script setup lang="ts">
@@ -20,7 +22,9 @@ import { getAllData, filterOutBadData, getBoroData} from '@/store/functions'
 import {ref, onMounted} from 'vue'
 import BoroughData from '@/components/BoroughData.vue'
 import GradeCharts from '@/components/GradeCharts.vue'
+import APIInfo from '@/components/APIInfo.vue'
 
+let showAPIInfo = ref(false)
 let showGradeCharts = ref(false)
 let showBoroData = ref(false)
 const data = await getAllData()
