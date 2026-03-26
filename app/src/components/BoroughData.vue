@@ -1,39 +1,32 @@
 <template>
-    <div class="shadow w-[50%] p-10 m-auto flex justify-center">
-        <form @submit.prevent="" >
-
-            <div class="flex">
-                <input class='mr-2'id='statenIsland' name='boro' value='statenIsland' type="checkbox">
-                <label for="statenIsland">Staten Island</label>
+    <div class="bg-white shadow-lg w-[50%] p-8 m-auto rounded-2xl border border-gray-100">
+        
+        <form @submit.prevent="" class="w-full" >
+            <div class="flex justify-between items-center mb-4">
+                <h1 class="text-xl my-2 font-bold">Borough Options</h1>
+                <button @click="$emit('close')" class="text-gray-400 hover:text-gray-700 text-xl font-bold transition-colors">X</button>
             </div>
-            <div class="">
-                <input class='mr-2' id='manhattan' name='boro' value='manhattan' type="checkbox">
-                <label for="manhattan">Manhattan</label>
-            </div>
-            <div class="">
-                <input class='mr-2' id='brooklyn' name='boro' value='brooklyn' type="checkbox">
-                <label for="brooklyn">Brooklyn</label>
-            </div>
-            <div class="">
-                <input class='mr-2' id='bronx' name='boro' value='bronx' type="checkbox">
-                <label for="bronx">Bronx</label>
-            </div>
-            <div class="">
-                <input class='mr-2'id='queens' name='boro' value='queens' type="checkbox">
-                <label for="queens">Queens</label>
-            </div>
+    
+            <label v-for="boro in boroOptions" :key="boro"
+                class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:border-emerald-200 hover:bg-emerald-50 cursor-pointer transition-all">
+                <input v-model="selectedBoros" type="checkbox" :value="boro" class="w-4 h-4 accent-emerald-500" />
+                <span class="text-gray-700 font-medium">{{ boro }}</span>
+            </label>
+            <p class="text-xs text-gray-400 mt-4">{{ selectedBoros.length }} borough{{ selectedBoros.length !== 1 ? 's' : '' }} selected</p>
         </form>
         
     </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-defineEmits(['boros'])
-
-const userBoros = computed(() => {
-
+import {ref, watch } from 'vue'
+const emits = defineEmits(['boros', 'close'])
+const boroOptions = ['Staten Island', 'Manhattan', 'Brooklyn', 'Bronx', 'Queens']
+const selectedBoros = ref<string[]>([])
+watch(selectedBoros, (newValue) => {
+  emits('boros', newValue)
 })
+
 </script>
 
 <style scoped>

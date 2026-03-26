@@ -10,7 +10,7 @@
         <button @click='showBoroData = true' class="font-bold">Get Data by Borough</button>
         <button class="font-bold">Guessing Game</button>
     </header>
-    <BoroughData v-if="showBoroData" ></BoroughData>
+    <BoroughData v-if="showBoroData" @close="showBoroData = false"></BoroughData>
     <GradeCharts :boros='boros' :inspections="filteredData" v-if="showGradeCharts"/>
 </template>
 
