@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="z-5">
         <h2 class="text-xl font-bold mb-4">Grade Explanation</h2>
         <p class="mb-2">The health inspection grading system assigns letter grades to restaurants based on their compliance with health and safety regulations. The grades are as follows:</p>
         <ul class="list-disc list-inside mb-4">
