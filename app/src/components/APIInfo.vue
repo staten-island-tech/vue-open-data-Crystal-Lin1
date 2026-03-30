@@ -20,12 +20,14 @@
   </div>
   <InspectionGrade @close='selected = ""' v-if="selected ==='GRADE' || selected === 'SCORE' "/>
     <InspectionCamis @close='selected = ""' v-if="selected === 'CAMIS'"/>
+    <InspectionDba @close='selected = ""' v-if="selected === 'DBA'"/>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import InspectionGrade from './ParameterInfo/InspectionGrade.vue'
 import InspectionCamis from './ParameterInfo/InspectionCamis.vue'
+import InspectionDba from './ParameterInfo/InspectionDba.vue'
 const selected = ref<string | null>(null)
 
 const parameters = [
