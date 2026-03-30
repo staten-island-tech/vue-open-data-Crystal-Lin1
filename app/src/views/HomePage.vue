@@ -7,9 +7,8 @@
                 <h2 class="italic">health inspection scores</h2>
             </div>
         </div>
-        <button @click='showBoroData = true' class="font-bold">Get Data by Borough</button>
-        <button class="font-bold">Guessing Game</button> 
-        <button @click="showAPIInfo = true">API Parameter Info</button>
+        <button @click='showBoroData = true' class="font-bold">Select Borough</button>
+        <button class="font-bold" @click="showAPIInfo = true">API Parameter Info</button>
     </header>
     <BoroughData v-if="showBoroData" @close="showBoroData = false"></BoroughData>
     <GradeCharts :boros='selectedBoros' :inspections="filteredData" v-if="showGradeCharts"/>
