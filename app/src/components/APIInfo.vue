@@ -1,6 +1,10 @@
 <template>
   <div class="shadow-lg w-[50%] p-8 m-auto rounded-2xl border border-gray-100">
-    <h1 class="text-xl font-bold mb-4 text-center">Parameters</h1>
+    <div class="flex items-center justify-between mb-4">
+        <div></div>
+        <h1 class="text-xl font-bold text-center ">Parameters</h1>
+        <button class="text-gray-400 hover:text-gray-700 font-bold transition-colors" @click="$emit('close')">X</button>
+    </div>
     <ul class="list-disc list-inside mb-4">
       <label
         v-for="parameter in parameters"
@@ -34,7 +38,7 @@ import { ref, computed } from 'vue'
 import InspectionGrade from './ParameterInfo/InspectionGrade.vue'
 import MostParameters from './ParameterInfo/MostParameters.vue'
 const selected = ref<string>('')
-
+defineEmits(['close'])
 const parameters = [
   { name: 'CAMIS', explanation: 'Unique identifier for the restaurant', moreInfo: 'Always an 8 digit number like 41670224' },
   { name: 'DBA', explanation: 'Restaurant name', moreInfo: 'The name of the restaurant as it appears to consumers' },
