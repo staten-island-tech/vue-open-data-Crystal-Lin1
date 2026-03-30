@@ -38,7 +38,7 @@
       <!-- Pie card -->
       <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
         <p class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-1">Distribution</p>
-        <h2 class="text-lg font-bold text-gray-900 mb-6">Grade Proportion</h2>
+        <h2 class="text-lg font-bold text-gray-900 mb-6">Grade Proportion — {{ props.boros.join(', ') }}</h2>
         <div class="flex justify-center">
           <div class="w-72 h-72">
             <Pie :data="pieData" :options="pieOptions" />
@@ -93,7 +93,9 @@ function gradeColor(grade: string | number | symbol): string {
 }
 
 const validRows = computed(() =>
-  props.inspections.filter(r => r.grade?.trim()),
+  props.inspections.filter(r => 
+    r.grade?.trim() && props.boros.includes(r.boro as string)
+  ),
 )
 
 const gradeCounts = computed(() => {

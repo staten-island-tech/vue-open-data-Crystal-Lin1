@@ -1,3 +1,6 @@
+import {ref} from 'vue'
+export const selectedBoros = ref<string[]>([])
+
 export async function getAllData(): Promise<Record<string, any>[]> {
     const url = 'https://data.cityofnewyork.us/resource/43nn-pn8j.json?$limit=10000'
     try {
@@ -18,24 +21,3 @@ export async function filterOutBadData(data: Record<string, unknown>[]): Promise
     return filteredData 
 }
 
-export async function getBoroData(filteredData: Record<string, unknown>[], boro: String): Promise<Record<string, unknown>[]> {
-    let boroData = null
-    
-    boroData = filteredData.filter((obj) => {
-        return obj.boro === boro
-    })
-    console.log(boroData)
-    return boroData
-} 
-
-
-interface Inspection {
-  camis: string
-  dba: string
-  boro: string
-  inspection_date: string
-  grade: string
-  grade_date: string
-  score: string
-  [key: string]: unknown
-}
