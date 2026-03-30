@@ -23,11 +23,11 @@
         {{ selectedExplanation }}
         </p>
         <h2 class="text-xs text-gray-400 mt-4">
-        Only the less self explanatory parameters have an explanation when clicked
+        The non self explanatory parameters have an explanation when clicked
         </h2>
     </div>
     <MostParameters
-      v-if="['CAMIS', 'DBA', 'BUILDING', 'ACTION'].includes(selected)"
+      v-if="['CAMIS', 'DBA', 'BUILDING', 'ACTION', 'CRITICAL FLAG'].includes(selected)"
       :name="selected"
       :explanation="parameters.find((p) => p.name === selected)?.explanation ?? ''"
       :more-info="moreInfo"
