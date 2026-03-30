@@ -18,24 +18,29 @@
       Only the less self explanatory parameters have an explanation when clicked
     </h2>
   </div>
+  <MostParameters 
+  v-if="['CAMIS', 'DBA', 'BUILDING', 'ACTION'].includes(selected)"
+  :name="selected"
+  :explanation="parameters.find(p => p.name === selected)?.explanation ?? ''"
+  :more-info="moreInfo"
+  @close="selected = ''"
+  />
   <InspectionGrade @close='selected = ""' v-if="selected ==='GRADE' || selected === 'SCORE' "/>
-    <InspectionCamis @close='selected = ""' v-if="selected === 'CAMIS'"/>
-    <InspectionDba @close='selected = ""' v-if="selected === 'DBA'"/>
+    
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import InspectionGrade from './ParameterInfo/InspectionGrade.vue'
-import InspectionCamis from './ParameterInfo/InspectionCamis.vue'
-import InspectionDba from './ParameterInfo/InspectionDba.vue'
-const selected = ref<string | null>(null)
+import MostParameters from './ParameterInfo/MostParameters.vue'
+const selected = ref<string>('')
 
 const parameters = [
-  { name: 'CAMIS', explanation: 'Unique identifier for the restaurant' },
-  { name: 'DBA', explanation: 'Restaurant name' },
-  { name: 'BUILDING', explanation: 'Building number' },
-  { name: 'ACTION', explanation: 'Actions associated with inspection (like nothing or closing down restaurant)' },
-  { name: 'CRITICAL FLAG', explanation: 'Critical, N/A, or Not Critical' },
+  { name: 'CAMIS', explanation: 'Unique identifier for the restaurant', moreInfo: 'Always an 8 digit number like 41670224' },
+  { name: 'DBA', explanation: 'Restaurant name', moreInfo: 'The name of the restaurant as it appears to consumers' },
+  { name: 'BUILDING', explanation: 'Building number', moreInfo: 'Just the number part of the address, no street name or anything else' },
+  { name: 'ACTION', explanation: 'Consequences of the inspection', moreInfo: 'Examples include nothing or closing' },
+  { name: 'CRITICAL FLAG', explanation: 'Critical, N/A, or Not Critical', moreInfo: 'Indicates whether a violation is critical, not critical, or not applicable' },
   { name: 'SCORE', explanation: '' },
   { name: 'GRADE', explanation: '' },
   { name: 'BORO', explanation: '' },
@@ -50,5 +55,8 @@ const parameters = [
 
 const selectedExplanation = computed(() =>
   parameters.find(p => p.name === selected.value)?.explanation ?? ''
+)
+const moreInfo = computed(() =>
+  parameters.find(p => p.name === selected.value)?.moreInfo ?? ''
 )
 </script>
